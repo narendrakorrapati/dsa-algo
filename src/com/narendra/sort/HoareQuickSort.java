@@ -5,10 +5,13 @@ import java.util.Arrays;
 public class HoareQuickSort {
 
     public static void main(String[] args) {
-        int arr[] = new int[]{8, 4, 7, 8, 3, 10, 5};
+        //int arr[] = new int[]{1, 2, 3, 4, 5, 6, 7};
         //int arr[] = new int[]{8, 8, 8, 8, 8, 8, 8};
+        int arr[] = new int[]{0, 1, 0, 2, 1, 2};
         quickSort(arr, 0, arr.length-1);
         System.out.println(Arrays.toString(arr));
+
+        System.out.println(partition(new int[]{0, 1, 0, 2, 1, 2}, 0, 5));
     }
 
     private static void quickSort(int[] arr, int low, int high) {
@@ -34,12 +37,12 @@ public class HoareQuickSort {
 
             do{
                 j--;
-            } while(j>=low && arr[j] > pivot); //Ignoring equal to pivot
+            } while(arr[j] > pivot); //Ignoring equal to pivot
 
             //Both sides ignoring equal to pivot so if the elements are equal to pivot on both the sides, they still get swapped.
             //This is to avoid i or j running out of boundaries of low and high.
 
-            if(i >= j) { //Here we need equal sign if i and j stops at same element, ideally that element will be equal to pivot (if we have duplicate elements of pivot).
+            if(i >= j) { //Here we need equal sign if i and j stops at same element, ideally that element will be equal to pivot (if we have duplicate elements of pivot). Pivot is picked in such a way that the array is divided in two half
                 return j;
             }
             swap(arr, i, j);

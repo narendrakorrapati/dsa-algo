@@ -1,29 +1,35 @@
 package com.narendra.sort;
 
-import java.util.Arrays;
-
-public class LomutoQuickSort {
+public class KthSmallestElement {
 
     public static void main(String[] args) {
-        //int arr[] = new int[] {8, 4, 7, 9, 3, 10, 5};
-        int arr[] = new int[]{24, 18, 38, 43, 14, 40, 1, 54};
-        quickSort(arr, 0, arr.length-1);
-        System.out.println(Arrays.toString(arr));
+        int arr[] = new int[]{10, 4, 5, 8, 11, 6, 26};
+        int smallest = kthSmallest(arr, 5);
+        System.out.println(smallest);
     }
 
-    private static void quickSort(int[] arr, int low, int high) {
+    private static int kthSmallest(int[] arr, int k) {
 
-        if(low < high) {
+        int low = 0;
+        int high = arr.length-1;
+
+        while(low <= high) {
             int p = partition(arr, low, high);
-            quickSort(arr, low, p-1);
-            quickSort(arr, p+1, high);
+            if(p == k-1) {
+                return arr[p];
+            } else if(p > k-1) {
+                high = p-1;
+            } else {
+                low = p + 1;
+            }
         }
+        return -1;
     }
 
     private static int partition(int[] arr, int low, int high) {
 
         int pivot = arr[high];
-        int i = low - 1;
+        int i= low - 1;
 
         for (int j = low; j <= high-1; j++) {
             if(arr[j] < pivot) {
