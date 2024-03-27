@@ -4,6 +4,5 @@ package com.narendra.stack;
 public class LargestRectangleWithAll1s {
 
     public static void main(String[] args) {
-
     }
 }
